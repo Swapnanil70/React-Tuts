@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        "use strict"
+        // let a = 34
+        // let a = 'This is me'
+        // const a = 34
+        let a = 45;
+        console.log(a)
+        // Numbers
+        // Objects
+        // Strings
+        // Boolean
+        // undefined
+        // null
+        function Neel() {
+            console.log('This is a function')
+        }
+        let obj = {
+            name: 'Neel',
+            age: 24,
+            type: 'Programmer',
+            os: 'Windows',
+            Neel: function myfunc(number) {
+                console.log('This is a function inside an object with number ' + number)
+            }
+        }
+
+        // document.addEventListener('click', function () {
+        //     console.log('Document was clicked');
+        //     // alert('Hello alert');
+        //     let conf = confirm('Are you sure you want to delete this page?');
+        //     console.log(conf);
+        // })
+
+        // let arr = ['Neel', 24, 'Programmer', 45, null, true];
+        // console.log(arr.reverse());
+
+        // for (let index = 0; index < array.length; index++) {
+            // const element = array[index];
+            // 
+        // }
+
+        // function myfunc(number) {
+        //     console.log('This is a normal function with number ', this)
+        // }
+        // myfunc(34);
+
+        // let arrNeel = () => {
+        //     console.log('This is a arrow function with ', this);
+        // }
+        // arrNeel();
+
+        let mobj = {
+            a : this,
+            func : function myfunc() {
+                console.log('This is a function inside an object with ', this);
+            }
+        }
+        mobj.func();
+
+        let mobj2 = {
+            a : this,
+            func : () => {
+                console.log('This is a arrow function inside an object with ', this);
+            }
+        }
+        mobj2.func();
+        
+        for (let index = 0; index < 5; index++) {
+            const element = index;
+            setTimeout(() => {
+                console.log(element);
+            }, 3000);
+        }
+        console.log('Mai neeche wali script hoon');
+        
+    </script>
+</head>
+<body>
+    <h1>
+        I am learning Java Script.
+    </h1>
+</body>
+</html>
