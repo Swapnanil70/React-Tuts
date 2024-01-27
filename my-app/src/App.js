@@ -1,29 +1,30 @@
 import './App.css';
 
-let name = 'Neel';
-
-function getGreeting(user) {
-  if (user) {
-    return <h1>Hello, {user}!</h1>;
-  }
-  return <h1>Hello, Stranger.</h1>;
-}
-
 function App() {
   return (
     <>
-    <nav>
-      <li>Home</li>
-      <li>About</li>
-      <li>Contact</li>
+    <nav className="navbar navbar-expand-lg bg-body-tertiary">
+      <div className="container-fluid">
+        <a className="navbar-brand" href="/">TextUtils</a>
+        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+            <li className="nav-item">
+              <a className="nav-link active" aria-current="page" href="/">Home</a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="/">About</a>
+            </li>
+          </ul>
+          <form className="d-flex" role="search">
+            <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+            <button className="btn btn-outline-success" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
     </nav>
-    <div className="container">
-      {getGreeting(name)} <br /> {getGreeting()}
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus nam fuga illo veritatis? Aperiam fugit suscipit asperiores sequi consequuntur eius officiis est voluptates ex, 
-        quia necessitatibus ipsam. Facilis asperiores sit nisi labore sint error!
-      </p>
-    </div>
     </>
   );
 }
