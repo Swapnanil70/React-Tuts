@@ -20,17 +20,33 @@ export default function TextForm(props) {
         setText(event.target.value);
     }
 
-    const [text, setText] = useState('Enter text here');
+    const handleClear = () => {
+        console.log("Clear was clicked");
+        let newText = '';
+        setText(newText);
+    }
+
+    const [text, setText] = useState('');
     // text = "new text"; // Wrong way to change the state
     // setText("new text"); // Correct way to change the state
     return (
-    <div>
-        <h1>{props.heading}</h1>
-        <div className="mb-3">
-            <textarea className="form-control" value={text} onChange={handleOnChange} id="myBox" rows="8"></textarea>
+        <>
+        <div className='container'>
+            <h1>{props.heading}</h1>
+            <div className="mb-3">
+                <textarea className="form-control" value={text} onChange={handleOnChange} placeholder='Enter text here' id="myBox" rows="8"></textarea>
+            </div>
+            <button className="btn btn-primary" onClick={handleUPClick}>Convert to uppercase</button>
+            <button className="btn btn-success mx-3" onClick={handleLOCase}>Convert to lowercase</button>
+            <button className="btn btn-danger" onClick={handleClear}>Clear Text</button>
         </div>
-        <button className="btn btn-primary" onClick={handleUPClick}>Convert to uppercase</button>
-        <button className="btn btn-success" onClick={handleLOCase}>Convert to lowercase</button>
-    </div>
+        <div className="container my-3">
+            <h2>Your Text Summary</h2>
+            <p>{text.split(" ").length} words and {text.length} characters</p>
+            <p>{0.008 * text.split(" ").length} Minutes read</p>
+            <h2>Preview</h2>
+            <p>{text}</p>
+        </div>
+        </>
   )
 }
