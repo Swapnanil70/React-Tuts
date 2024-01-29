@@ -7,12 +7,14 @@ export default function TextForm(props) {
         console.log("Uppercase was clicked" + text);
         let newText = text.toUpperCase();
         setText(newText);
+        props.showAlert("Text was converted to uppercase.", "success")
     }
 
     const handleLOCase = () => {
         console.log("Lowercase was clicked" + text);
         let newText = text.toLowerCase();
         setText(newText);
+        props.showAlert("Text was converted to lowercase.", "success");
     }
 
     const handleOnChange = (event) => { // We get an event object automatically as a parameter when event change occurs
@@ -24,6 +26,15 @@ export default function TextForm(props) {
         console.log("Clear was clicked");
         let newText = '';
         setText(newText);
+        props.showAlert("Text cleared.", "success");
+    }
+
+    const handleCopy = ()=>{
+        console.log("Copy to Clipboard");
+        var text = document.getElementById('myBox');
+        text.select();
+        navigator.clipboard.writeText(text.value);
+        props.showAlert("Copied to clipboard.", "success");
     }
 
     const [text, setText] = useState('');
@@ -40,6 +51,7 @@ export default function TextForm(props) {
             <button className="btn btn-primary" onClick={handleUPClick}>Convert to uppercase</button>
             <button className="btn btn-success mx-3" onClick={handleLOCase}>Convert to lowercase</button>
             <button className="btn btn-danger" onClick={handleClear}>Clear Text</button>
+            <button className="btn btn-warning mx-3" onClick={handleCopy}>Copy To Clipboard</button>
         </div>
         <div className="container my-3" style={{color : props.mode==='light'?'#042743':'white'}}>
             <h2>Your Text Summary</h2>
