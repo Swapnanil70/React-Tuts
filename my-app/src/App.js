@@ -1,4 +1,5 @@
 import './App.css';
+import Alert from './components/Alert';
 // import About from './components/About';
 import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
@@ -7,6 +8,7 @@ import React, { useState } from 'react';
 
 function App() {
   const [mode, setMode] = useState('light')
+  const [alert, setAlert] = useState(null)
 
   const toggleMode = ()=>{
     if(mode === 'light'){
@@ -25,6 +27,7 @@ function App() {
     {/* <Navbar title="TextUtils" aboutText="About TextUtils"/> */}
     {/* <Navbar/> */}
     <Navbar title="TextUtils" mode={mode} toggleMode={toggleMode} />
+    <Alert alert="This is an Alert."/>
     <div className="container my-3">
       <TextForm heading="Enter the text to analyze below" mode={mode}/>
       {/* <About/> */}
