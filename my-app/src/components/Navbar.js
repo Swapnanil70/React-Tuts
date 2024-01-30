@@ -1,7 +1,17 @@
-import React from 'react'
+import React  from 'react'
 import PropTypes from 'prop-types'
+import './Navbar.css'
+import { useState } from 'react'
 
 export default function Navbar(props) {
+
+  const [darkModeColor, setdarkModeColor] = useState('primary')
+
+  const setDarkModeColor = (color, button) => {
+    setdarkModeColor(color);
+    props.toggleMode(darkModeColor);
+  }
+
   return (
     <nav className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}>
       <div className="container-fluid">
@@ -22,8 +32,11 @@ export default function Navbar(props) {
             <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
             <button className="btn btn-outline-success" type="submit">Search</button>
           </form> */}
+          <button type="button" onClick={() => setDarkModeColor("primary", "colorbtn")} className="btn btn-primary btn-circle btn-sm mx-3">Blue</button>
+          <button type="button" onClick={() => setDarkModeColor("secondary", "colorbtn")} className="btn btn-secondary btn-circle btn-sm">Grey</button>
+          <button type="button" onClick={() => setDarkModeColor("purple", "colorbtn")} className="btn btn-purple btn-circle btn-sm mx-3">Purple</button>
           <div className={`form-check form-switch text-${props.mode==='light'?'dark':'light'}`}>
-            <input className="form-check-input" onClick={props.toggleMode} type="checkbox" role="switch" id="flexSwitchCheckDefault" />
+            <input className="form-check-input" onClick={props.toggleMode} type="checkbox" role="switch" id="flexSwitchCheckDefault"/>
             <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Dark Mode</label>
           </div>
         </div>

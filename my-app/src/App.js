@@ -20,16 +20,30 @@ function App() {
     }, 2000);
   }
 
-  const toggleMode = ()=>{
+
+  const toggleMode = (color)=>{
+    console.log("Mode : ", mode)
     if(mode === 'light'){
+      console.log("light mode is set change to dark");
       setMode('dark');
-      document.body.style.backgroundColor = '#042743';
+      if (color === "secondary") {
+        document.body.style.backgroundColor = '#b4b3b5';
+      }
+      else if (color === "purple") {
+        document.body.style.backgroundColor = '#8a2be2';
+      }
+      else{
+        document.body.style.backgroundColor = '#042743';
+      }
       showAlert("Dark Mode has been enabled.", "success");
+      document.title = 'TextUtils - DarkMode';
     }
-    else{
+    else {
+      console.log("dark mode is set change to light")
       setMode('light');
       document.body.style.backgroundColor = 'white';
       showAlert("Light Mode has been enabled.", "success");
+      document.title = 'TextUtils - LightMode';
     }
   }
 

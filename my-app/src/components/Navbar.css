@@ -1,0 +1,21 @@
+.xyz { 
+    background-size: auto; 
+    text-align: center; 
+    padding-top: 100px; 
+} 
+.btn-circle.btn-sm { 
+    width: 30px; 
+    height: 30px; 
+    padding: 6px 0px; 
+    border-radius: 15px; 
+    font-size: 8px; 
+    text-align: center; 
+} 
+/* Purple button */
+.btn-purple {
+    background-color: #876aac;
+}
+/* Purple button hover */
+.btn-purple:hover{
+    background-color: #8a2be2;
+}
