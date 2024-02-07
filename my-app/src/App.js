@@ -1,8 +1,14 @@
 import './App.css';
 import Alert from './components/Alert';
-// import About from './components/About';
+import About from './components/About';
 import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
+
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes
+} from "react-router-dom";
 
 import React, { useState } from 'react';
 
@@ -49,15 +55,21 @@ function App() {
 
   return (
     <>
+    <Router>
     {/* This is a prop or passing a prop */}
     {/* <Navbar title="TextUtils" aboutText="About TextUtils"/> */}
     {/* <Navbar/> */}
-    <Navbar title="TextUtils" mode={mode} toggleMode={toggleMode} />
+    <Navbar title="TextUtils" mode={mode} toggleMode={toggleMode} aboutText="About"/>
     <Alert alert={alert}/>
-    <div className="container my-3">
-      <TextForm showAlert={showAlert} heading="Enter the text to analyze below" mode={mode}/>
-      {/* <About/> */}
-    </div>
+      <div className="container my-3">
+        {/* A <Switch> looks through its children <Route>s and
+              renders the first one that matches the current URL. */}
+          <Routes>
+            <Route exact path="/" element={<TextForm showAlert={showAlert} heading="Enter the text to analyze below" mode={mode}/>} />
+            <Route exact path="/about" element={<About/>} />
+          </Routes>
+      </div>
+    </Router>
     </>
   );
 }
