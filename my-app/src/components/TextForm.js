@@ -34,6 +34,7 @@ export default function TextForm(props) {
         var text = document.getElementById('myBox');
         text.select();
         navigator.clipboard.writeText(text.value);
+        document.getSelection().removeAllRanges();
         props.showAlert("Copied to clipboard.", "success");
     }
 
@@ -45,18 +46,19 @@ export default function TextForm(props) {
         <div className='container' style={{color : props.mode==='dark'?'white':'#042743'}}>
             <h1>{props.heading}</h1>
             <div className="mb-3">
-                <textarea className="form-control" value={text} onChange={handleOnChange} placeholder='Enter text here' id="myBox" rows="8" style={{backgroundColor : props.mode==='dark'?'grey':'white',
+                <textarea className="form-control" value={text} onChange={handleOnChange} placeholder='Enter text here' id="myBox" rows="8" style={{backgroundColor : props.mode==='dark'?'#13466e':'white',
             color : props.mode==='dark'?'white':'#042743'}}></textarea>
             </div>
-            <button className="btn btn-primary" onClick={handleUPClick}>Convert to uppercase</button>
-            <button className="btn btn-success mx-3" onClick={handleLOCase}>Convert to lowercase</button>
-            <button className="btn btn-danger" onClick={handleClear}>Clear Text</button>
-            <button className="btn btn-warning mx-3" onClick={handleCopy}>Copy To Clipboard</button>
+            <button className="btn btn-primary mx-1 my-1" onClick={handleUPClick}>Convert to uppercase</button>
+            <button className="btn btn-success mx-1 my-1" onClick={handleLOCase}>Convert to lowercase</button>
+            <button className="btn btn-danger mx-1 my-1" onClick={handleClear}>Clear Text</button>
+            <button className="btn btn-warning mx-1 my-1" onClick={handleCopy}>Copy To Clipboard</button>
         </div>
         <div className="container my-3" style={{color : props.mode==='light'?'#042743':'white'}}>
             <h2>Your Text Summary</h2>
-            <p>{text.split(" ").length} words and {text.length} characters</p>
-            <p>{0.008 * text.split(" ").length} Minutes read</p>
+            <p>{text.split(/\s+/).filter((element)=>{return element.length !== 0}).length} words and {text.length} characters</p>
+            {/* Used regular expression study about them in Java Script tuts. */}
+            <p>{0.008 * text.split(" ").filter((element)=>{return element.length !== 0}).length} Minutes read</p>
             <h2>Preview</h2>
             <p>{text.length > 0? text: "Enter Something to preview"}</p>
         </div>
